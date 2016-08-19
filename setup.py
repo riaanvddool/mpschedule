@@ -1,41 +1,29 @@
-import codecs
-import os
 import sys
-from distutils.core import setup
+sys.path.pop(0)
+from setuptools import setup
 
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload -r pypi')
-    sys.exit()
+#from distutils.core import setup
 
-SCHEDULE_VERSION = '0.3.2'
+
+SCHEDULE_VERSION = '0.1.8'
 SCHEDULE_DOWNLOAD_URL = (
-    'https://github.com/dbader/schedule/tarball/' + SCHEDULE_VERSION
+    'https://github.com/rguillon/schedule/tarball/' + SCHEDULE_VERSION
 )
 
-def read_file(filename):
-    """
-    Read a utf8 encoded text file and return its contents.
-    """
-    with codecs.open(filename, 'r', 'utf8') as f:
-        return f.read()
 
 setup(
-    name='schedule',
+    name='micropython-schedule',
     packages=['schedule'],
     version=SCHEDULE_VERSION,
     description='Job scheduling for humans.',
-    long_description=(
-        read_file('README.rst') + '\n\n' +
-        read_file('HISTORY.rst')
-    ),
-    license=read_file('LICENSE.txt'),
-    author='Daniel Bader',
-    author_email='mail@dbader.org',
-    url='https://github.com/dbader/schedule',
+    long_description="Lighter implementation of the schedule module: https://github.com/dbader/schedule",
+    license="MIT", 
+    author='Renaud Guillon',
+    author_email='renaud.guillon@gmail.com',
+    url='https://github.com/rguillon/schedule',
     download_url=SCHEDULE_DOWNLOAD_URL,
     keywords=[
-        'schedule', 'periodic', 'jobs', 'scheduling', 'clockwork',
-        'cron'
+        'schedule', 'periodic', 'jobs', 'scheduling','cron','micropython'
     ],
     classifiers=[
         'Intended Audience :: Developers',
@@ -44,4 +32,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Natural Language :: English',
     ],
+    py_modules=['schedule'], 
+    install_requires=['micropython-ucontextlib', 'micropython-logging', 'micropython-time']
 )
