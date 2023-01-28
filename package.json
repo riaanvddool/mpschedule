@@ -1,0 +1,11 @@
+{
+  "urls": [
+    ["schedule/__init__.py", "github:rguillon/schedule/schedule/__init__.py"],
+  ],
+  "deps": [
+    ["ucontextlib", "latest"],
+    ["logging", "latest"],
+    ["time", "latest"]
+  ],
+  "version": "0.3.2"
+}
